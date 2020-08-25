@@ -1,0 +1,28 @@
+{
+	"name": "trivia-bot",
+	"version": "1.0.0",
+	"description": "Trivia chatbot that generates new question with multi choice",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"messengerx",
+		"messengerx.io",
+		"chatbot",
+		"chatapps",
+		"nodejs",
+		"bot",
+		"trivia"
+	],
+	"author": "Chitrang Thakkar",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.17.1",
+		"machaao": "^0.1.8"
+	},
+	"engines": {
+		"node": "10.x"
+	}
+}
