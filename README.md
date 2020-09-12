@@ -12,7 +12,7 @@ Visit https://blog.messengerx.io/tutorials/create-a-trivia-bot-with-node-js-and-
 
 2. Clone the forked repo. - Click the green button saying "Code" with a download button.
 
-2. Visit https://github.com/abhishekraj272/monecare/issues and comment your username. - Thereby I would be able to assign this issue to you for contribution.
+2. Visit https://github.com/machaao/TriviaBot/issues and comment your username. - Thereby I would be able to assign this issue to you for contribution.
 
 3. Solve and Test your application. - You can do this in your own system with preferred editos.
 
