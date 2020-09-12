@@ -32,7 +32,8 @@ cd TriviaBot
 ```javascript
 const lib = new MxSdk('<----Bot Token----->', 'dev', server);
 ```
-4. Commit the repo.
+4. npm install
+5. Commit the repo.
 ```bash
 git add .
 
