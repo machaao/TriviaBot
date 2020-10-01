@@ -65,6 +65,10 @@ git push heroku master
 
 If deployment went good, update the chatbot endpoint -> ```https://<heroku-app-name>.herokuapp.com/incoming``` on https://portal.messengerx.io.
 
+### Documentation for Deploying on
+1. [AWS Elastic Beanstalk](https://github.com/machaao/TriviaBot/blob/master/AWS/README.md)
+2. [GCP App Engine](https://github.com/machaao/TriviaBot/blob/master/GCP/README.md)
+
 ### Tools Used
 
 1. MessengerX API
