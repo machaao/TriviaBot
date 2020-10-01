@@ -85,7 +85,7 @@ If deployment went good, update the chatbot endpoint -> ```https://<heroku-app-n
 
 ### Tools Used :wrench:
 
-1. [MessengerX API](https://developers.facebook.com/docs/messenger-platform/reference/messenger-code-api?locale=pt_BR)
+1. [MessengerX API](https://messengerx.io)
 2. [Trivia Quiz API](https://opentdb.com/api_config.php)
 3. [Heroku](https://www.heroku.com/)
 
