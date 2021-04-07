@@ -22,31 +22,36 @@ const welcome_responses = [
 ];
 
 server.post('/incoming', async (req, res) => {
-	//get incoming messages
-	const x = await lib.getUserMessages(req);
+	try {
+		//get incoming messages
+		const x = await lib.getUserMessages(req);
 
-	//manage user response
-	if (x.length > 0) {
-		const incoming = x[0].message_data;
+		//manage user response
+		if (x.length > 0) {
+			const incoming = x[0].message_data;
 
-		switch (incoming.action_type) {
-			case 'postback':
-				if (welcome_responses.includes(incoming.text)) sendWelcomeMessage(req);
-				else sendFallbackMessage(req);
-				break;
-			case 'quick_reply':
-				if (welcome_responses.includes(incoming.text)) sendWelcomeMessage(req);
-				else if (incoming.text === 'start') sendQuestionMessage(req);
-				else checkResult(incoming, req);
-				break;
-			case 'get_started':
-				if (welcome_responses.includes(incoming.text)) sendWelcomeMessage(req);
-				else sendFallbackMessage(req);
-				break;
+			switch (incoming.action_type) {
+				case 'postback':
+					if (welcome_responses.includes(incoming.text)) sendWelcomeMessage(req);
+					else sendFallbackMessage(req);
+					break;
+				case 'quick_reply':
+					if (welcome_responses.includes(incoming.text)) sendWelcomeMessage(req);
+					else if (incoming.text === 'start') sendQuestionMessage(req);
+					else checkResult(incoming, req);
+					break;
+				case 'get_started':
+					if (welcome_responses.includes(incoming.text)) sendWelcomeMessage(req);
+					else sendFallbackMessage(req);
+					break;
+			}
 		}
-	}
 
-	res.sendStatus(200);
+		res.sendStatus(200);
+	} catch (error) {
+		console.error(error.stack);
+		res.send(500);
+	}
 });
 async function getQuestion() {
 	const options = {
@@ -116,21 +121,25 @@ async function sendFallbackMessage(req) {
 }
 
 async function sendQuestionMessage(req) {
-	//generate question
-	//set user tag
-	//send question
+	try {
+		//generate question
+		//set user tag
+		//send question
 
-	const q = await getQuestion();
-	const response = await lib.addUserTag('currentQuestion', [q], req);
-	let answers = [...q.incorrect_answers, q.correct_answer];
-	answers = answers.sort((a, b) => {
-		return 0.5 - Math.random();
-	});
-	const qrs = [];
-	answers.map((a) => {
-		qrs.push({ title: a, content_type: 'text', payload: a });
-	});
-	return lib.sendButtonsOrQuickRepliesMessage(req, q.question, [], qrs);
+		const q = await getQuestion();
+		const response = await lib.addUserTag('currentQuestion', [q], req);
+		let answers = [...q.incorrect_answers, q.correct_answer];
+		answers = answers.sort((a, b) => {
+			return 0.5 - Math.random();
+		});
+		const qrs = [];
+		answers.map((a) => {
+			qrs.push({ title: a, content_type: 'text', payload: a });
+		});
+		return lib.sendButtonsOrQuickRepliesMessage(req, q.question, [], qrs);
+	} catch (error) {
+		console.error(error.stack);
+	}
 }
 const p = process.env.PORT || 3000;
 server.listen(p, () => {
