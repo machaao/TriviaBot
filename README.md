@@ -30,7 +30,7 @@ cd TriviaBot
 2. Open ```index.js``` in an editor
 3. Place the bot token at line 4.
 ```javascript
-const lib = new MxSdk('<----Bot Token----->', 'dev', server);
+const lib = new MxSdk('<----Bot Token----->', 'prod', server);
 ```
 4. npm install
 5. Commit the repo.
